@@ -40,8 +40,8 @@ void setupSerialsAndStreams() {
     SPI.begin();
 
 #ifdef USE_ARDUINO_UNO
-    //interfaceStream = &Serial;
-    debugStream = &Serial;
+    interfaceStream = &Serial;
+    // debugStream = &Serial;
 #else 
     bluetoothSerial.begin("bluetoothserial");
 
@@ -55,7 +55,7 @@ void setup() {
 
     canHacker = new CanHacker(interfaceStream, debugStream, SPI_CS_PIN);
     canHacker->setClock(MCP_8MHZ);
-    canHacker->enableLoopback(); // uncomment this for loopback
+    // canHacker->enableLoopback(); // uncomment this for loopback
     lineReader = new CanHackerLineReader(canHacker);
     
     pinMode(INT_PIN, INPUT);
